@@ -21,6 +21,7 @@
   ],
   "scripts": {
     "gen": "openapi-ts",
+    "check-update": "node lib/scripts/check-update.js",
     "sync:patch": "node lib/scripts/sync-patch.js",
     "sync:version": "node lib/scripts/sync-version.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
