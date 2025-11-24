@@ -21,13 +21,15 @@
   ],
   "scripts": {
     "gen": "openapi-ts",
-    "script:sync-patch": "node scripts/sync-patch.js",
-    "script:sync-version": "node scripts/sync-version.js",
+    "sync:patch": "node lib/scripts/sync-patch.js",
+    "sync:version": "node lib/scripts/sync-version.js",
     "build": "tsc -p tsconfig.json",
     "prepublishOnly": "pnpm gen && pnpm build"
   },
   "devDependencies": {
     "@hey-api/openapi-ts": "^0.42.0",
-    "typescript": "^5.0.0"
+    "node-fetch": "^3.3.2",
+    "typescript": "^5.0.0",
+    "yaml": "^2.8.1"
   }
 }
