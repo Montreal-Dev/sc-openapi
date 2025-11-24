@@ -20,18 +20,22 @@ jobs:
         with:
           node-version: '20'
 
-      # 3. Install dependencies with pnpm
+        # 3. Install pnpm
+      - name: Setup pnpm
+        run: npm install -g pnpm
+
+      # 4. Install dependencies with pnpm
       - name: Install dependencies
         run: pnpm install
 
-      # 4. Check for OpenAPI updates
+      # 5. Check for OpenAPI updates
       - name: Check for updates
         id: check
         run: |
           output=$(pnpm run ci:check | grep 'changed=true' || true)
           echo "changed=$output" >> $GITHUB_OUTPUT
 
-      # 5. Update patch & version
+      # 6. Update patch & version
       - name: Update patch & version
         id: update
         if: ${{ steps.check.outputs.changed == 'changed=true' }}
@@ -40,12 +44,12 @@ jobs:
           # Read the version from the script's output file if using GITHUB_OUTPUT
           # For newer GH syntax, ci-update.js should write: echo "openapi_version=$VERSION" >> $GITHUB_OUTPUT
 
-      # 6. Generate SDK
+      # 7. Generate SDK
       - name: Generate SDK
         if: ${{ steps.check.outputs.changed == 'changed=true' }}
         run: pnpm run ci:generate
 
-      # 7. Commit & push changes /w version
+      # 8. Commit & push changes /w version
       - name: Commit & Push
         if: ${{ steps.check.outputs.changed == 'changed=true' }}
         run: |
@@ -57,7 +61,7 @@ jobs:
           git commit -m "🤖 Update OpenAPI patch, version & SDKs to v$VERSION"
           git push -u origin openapi-update-$VERSION
 
-      # 8. Create Pull Request with version in title & body
+      # 9. Create Pull Request with version in title & body
       - name: Create Pull Request
         if: ${{ steps.check.outputs.changed == 'changed=true' }}
         uses: peter-evans/create-pull-request@v5
