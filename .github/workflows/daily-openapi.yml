@@ -57,7 +57,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git checkout -b openapi-update-$VERSION
-          git add patches/ package.json openapi/src/generated
+          git add patches/ package.json src/openapi/generated
           git commit -m "🤖 Update OpenAPI patch, version & SDKs to v$VERSION"
           git push -u origin openapi-update-$VERSION
 
