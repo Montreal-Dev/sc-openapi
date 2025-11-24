@@ -1,0 +1,30 @@
+{
+  "name": "sc-openapi",
+  "version": "0.0.1",
+  "description": "A fully typed, auto-generated TypeScript client for the SoundCloud API, built from OpenAPI using Hey-API.",
+  "author": "Rabel",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "gen": "openapi-ts",
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "pnpm gen && pnpm build"
+  },
+  "devDependencies": {
+    "@hey-api/openapi-ts": "^0.42.0",
+    "typescript": "^5.0.0"
+  }
+}
