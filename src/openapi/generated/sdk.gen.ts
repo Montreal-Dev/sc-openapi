@@ -2,21 +2,94 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import { addPetResponseTransformer, createUserResponseTransformer, createUsersWithListInputResponseTransformer, findPetsByStatusResponseTransformer, findPetsByTagsResponseTransformer, getOrderByIdResponseTransformer, getPetByIdResponseTransformer, getUserByNameResponseTransformer, placeOrderResponseTransformer, updatePetResponseTransformer, updatePetWithFormResponseTransformer } from './transformers.gen';
-import type { AddPetData, AddPetErrors, AddPetResponses, CreateUserData, CreateUserErrors, CreateUserResponses, CreateUsersWithListInputData, CreateUsersWithListInputErrors, CreateUsersWithListInputResponses, DeleteOrderData, DeleteOrderErrors, DeleteOrderResponses, DeletePetData, DeletePetErrors, DeletePetResponses, DeleteUserData, DeleteUserErrors, DeleteUserResponses, FindPetsByStatusData, FindPetsByStatusErrors, FindPetsByStatusResponses, FindPetsByTagsData, FindPetsByTagsErrors, FindPetsByTagsResponses, GetInventoryData, GetInventoryErrors, GetInventoryResponses, GetOrderByIdData, GetOrderByIdErrors, GetOrderByIdResponses, GetPetByIdData, GetPetByIdErrors, GetPetByIdResponses, GetUserByNameData, GetUserByNameErrors, GetUserByNameResponses, LoginUserData, LoginUserErrors, LoginUserResponses, LogoutUserData, LogoutUserErrors, LogoutUserResponses, PlaceOrderData, PlaceOrderErrors, PlaceOrderResponses, UpdatePetData, UpdatePetErrors, UpdatePetResponses, UpdatePetWithFormData, UpdatePetWithFormErrors, UpdatePetWithFormResponses, UpdateUserData, UpdateUserErrors, UpdateUserResponses, UploadFileData, UploadFileErrors, UploadFileResponses } from './types.gen';
+import {
+  addPetResponseTransformer,
+  createUserResponseTransformer,
+  createUsersWithListInputResponseTransformer,
+  findPetsByStatusResponseTransformer,
+  findPetsByTagsResponseTransformer,
+  getOrderByIdResponseTransformer,
+  getPetByIdResponseTransformer,
+  getUserByNameResponseTransformer,
+  placeOrderResponseTransformer,
+  updatePetResponseTransformer,
+  updatePetWithFormResponseTransformer,
+} from './transformers.gen';
+import type {
+  AddPetData,
+  AddPetErrors,
+  AddPetResponses,
+  CreateUserData,
+  CreateUserErrors,
+  CreateUserResponses,
+  CreateUsersWithListInputData,
+  CreateUsersWithListInputErrors,
+  CreateUsersWithListInputResponses,
+  DeleteOrderData,
+  DeleteOrderErrors,
+  DeleteOrderResponses,
+  DeletePetData,
+  DeletePetErrors,
+  DeletePetResponses,
+  DeleteUserData,
+  DeleteUserErrors,
+  DeleteUserResponses,
+  FindPetsByStatusData,
+  FindPetsByStatusErrors,
+  FindPetsByStatusResponses,
+  FindPetsByTagsData,
+  FindPetsByTagsErrors,
+  FindPetsByTagsResponses,
+  GetInventoryData,
+  GetInventoryErrors,
+  GetInventoryResponses,
+  GetOrderByIdData,
+  GetOrderByIdErrors,
+  GetOrderByIdResponses,
+  GetPetByIdData,
+  GetPetByIdErrors,
+  GetPetByIdResponses,
+  GetUserByNameData,
+  GetUserByNameErrors,
+  GetUserByNameResponses,
+  LoginUserData,
+  LoginUserErrors,
+  LoginUserResponses,
+  LogoutUserData,
+  LogoutUserErrors,
+  LogoutUserResponses,
+  PlaceOrderData,
+  PlaceOrderErrors,
+  PlaceOrderResponses,
+  UpdatePetData,
+  UpdatePetErrors,
+  UpdatePetResponses,
+  UpdatePetWithFormData,
+  UpdatePetWithFormErrors,
+  UpdatePetWithFormResponses,
+  UpdateUserData,
+  UpdateUserErrors,
+  UpdateUserResponses,
+  UploadFileData,
+  UploadFileErrors,
+  UploadFileResponses,
+} from './types.gen';
 
-export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
-    /**
-     * You can provide a client instance returned by `createClient()` instead of
-     * individual options. This might be also useful if you want to implement a
-     * custom client.
-     */
-    client?: Client;
-    /**
-     * You can pass arbitrary values through the `meta` object. This can be
-     * used to access values that aren't defined as part of the SDK function.
-     */
-    meta?: Record<string, unknown>;
+export type Options<
+  TData extends TDataShape = TDataShape,
+  ThrowOnError extends boolean = boolean,
+> = Options2<TData, ThrowOnError> & {
+  /**
+   * You can provide a client instance returned by `createClient()` instead of
+   * individual options. This might be also useful if you want to implement a
+   * custom client.
+   */
+  client?: Client;
+  /**
+   * You can pass arbitrary values through the `meta` object. This can be
+   * used to access values that aren't defined as part of the SDK function.
+   */
+  meta?: Record<string, unknown>;
 };
 
 /**
@@ -24,22 +97,28 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
  *
  * Add a new pet to the store.
  */
-export const addPet = <ThrowOnError extends boolean = false>(options: Options<AddPetData, ThrowOnError>) => {
-    return (options.client ?? client).post<AddPetResponses, AddPetErrors, ThrowOnError>({
-        responseTransformer: addPetResponseTransformer,
-        security: [
-            {
-                scheme: 'bearer',
-                type: 'http'
-            }
-        ],
-        url: '/pet',
-        ...options,
-        headers: {
-            'Content-Type': 'application/json',
-            ...options.headers
-        }
-    });
+export const addPet = <ThrowOnError extends boolean = false>(
+  options: Options<AddPetData, ThrowOnError>,
+) => {
+  return (options.client ?? client).post<
+    AddPetResponses,
+    AddPetErrors,
+    ThrowOnError
+  >({
+    responseTransformer: addPetResponseTransformer,
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/pet',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -47,22 +126,28 @@ export const addPet = <ThrowOnError extends boolean = false>(options: Options<Ad
  *
  * Update an existing pet by Id.
  */
-export const updatePet = <ThrowOnError extends boolean = false>(options: Options<UpdatePetData, ThrowOnError>) => {
-    return (options.client ?? client).put<UpdatePetResponses, UpdatePetErrors, ThrowOnError>({
-        responseTransformer: updatePetResponseTransformer,
-        security: [
-            {
-                scheme: 'bearer',
-                type: 'http'
-            }
-        ],
-        url: '/pet',
-        ...options,
-        headers: {
-            'Content-Type': 'application/json',
-            ...options.headers
-        }
-    });
+export const updatePet = <ThrowOnError extends boolean = false>(
+  options: Options<UpdatePetData, ThrowOnError>,
+) => {
+  return (options.client ?? client).put<
+    UpdatePetResponses,
+    UpdatePetErrors,
+    ThrowOnError
+  >({
+    responseTransformer: updatePetResponseTransformer,
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/pet',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -70,18 +155,24 @@ export const updatePet = <ThrowOnError extends boolean = false>(options: Options
  *
  * Multiple status values can be provided with comma separated strings.
  */
-export const findPetsByStatus = <ThrowOnError extends boolean = false>(options: Options<FindPetsByStatusData, ThrowOnError>) => {
-    return (options.client ?? client).get<FindPetsByStatusResponses, FindPetsByStatusErrors, ThrowOnError>({
-        responseTransformer: findPetsByStatusResponseTransformer,
-        security: [
-            {
-                scheme: 'bearer',
-                type: 'http'
-            }
-        ],
-        url: '/pet/findByStatus',
-        ...options
-    });
+export const findPetsByStatus = <ThrowOnError extends boolean = false>(
+  options: Options<FindPetsByStatusData, ThrowOnError>,
+) => {
+  return (options.client ?? client).get<
+    FindPetsByStatusResponses,
+    FindPetsByStatusErrors,
+    ThrowOnError
+  >({
+    responseTransformer: findPetsByStatusResponseTransformer,
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/pet/findByStatus',
+    ...options,
+  });
 };
 
 /**
@@ -89,18 +180,24 @@ export const findPetsByStatus = <ThrowOnError extends boolean = false>(options: 
  *
  * Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
  */
-export const findPetsByTags = <ThrowOnError extends boolean = false>(options: Options<FindPetsByTagsData, ThrowOnError>) => {
-    return (options.client ?? client).get<FindPetsByTagsResponses, FindPetsByTagsErrors, ThrowOnError>({
-        responseTransformer: findPetsByTagsResponseTransformer,
-        security: [
-            {
-                scheme: 'bearer',
-                type: 'http'
-            }
-        ],
-        url: '/pet/findByTags',
-        ...options
-    });
+export const findPetsByTags = <ThrowOnError extends boolean = false>(
+  options: Options<FindPetsByTagsData, ThrowOnError>,
+) => {
+  return (options.client ?? client).get<
+    FindPetsByTagsResponses,
+    FindPetsByTagsErrors,
+    ThrowOnError
+  >({
+    responseTransformer: findPetsByTagsResponseTransformer,
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/pet/findByTags',
+    ...options,
+  });
 };
 
 /**
@@ -108,17 +205,23 @@ export const findPetsByTags = <ThrowOnError extends boolean = false>(options: Op
  *
  * Delete a pet.
  */
-export const deletePet = <ThrowOnError extends boolean = false>(options: Options<DeletePetData, ThrowOnError>) => {
-    return (options.client ?? client).delete<DeletePetResponses, DeletePetErrors, ThrowOnError>({
-        security: [
-            {
-                scheme: 'bearer',
-                type: 'http'
-            }
-        ],
-        url: '/pet/{petId}',
-        ...options
-    });
+export const deletePet = <ThrowOnError extends boolean = false>(
+  options: Options<DeletePetData, ThrowOnError>,
+) => {
+  return (options.client ?? client).delete<
+    DeletePetResponses,
+    DeletePetErrors,
+    ThrowOnError
+  >({
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/pet/{petId}',
+    ...options,
+  });
 };
 
 /**
@@ -126,22 +229,28 @@ export const deletePet = <ThrowOnError extends boolean = false>(options: Options
  *
  * Returns a single pet.
  */
-export const getPetById = <ThrowOnError extends boolean = false>(options: Options<GetPetByIdData, ThrowOnError>) => {
-    return (options.client ?? client).get<GetPetByIdResponses, GetPetByIdErrors, ThrowOnError>({
-        responseTransformer: getPetByIdResponseTransformer,
-        security: [
-            {
-                name: 'api_key',
-                type: 'apiKey'
-            },
-            {
-                scheme: 'bearer',
-                type: 'http'
-            }
-        ],
-        url: '/pet/{petId}',
-        ...options
-    });
+export const getPetById = <ThrowOnError extends boolean = false>(
+  options: Options<GetPetByIdData, ThrowOnError>,
+) => {
+  return (options.client ?? client).get<
+    GetPetByIdResponses,
+    GetPetByIdErrors,
+    ThrowOnError
+  >({
+    responseTransformer: getPetByIdResponseTransformer,
+    security: [
+      {
+        name: 'api_key',
+        type: 'apiKey',
+      },
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/pet/{petId}',
+    ...options,
+  });
 };
 
 /**
@@ -149,18 +258,24 @@ export const getPetById = <ThrowOnError extends boolean = false>(options: Option
  *
  * Updates a pet resource based on the form data.
  */
-export const updatePetWithForm = <ThrowOnError extends boolean = false>(options: Options<UpdatePetWithFormData, ThrowOnError>) => {
-    return (options.client ?? client).post<UpdatePetWithFormResponses, UpdatePetWithFormErrors, ThrowOnError>({
-        responseTransformer: updatePetWithFormResponseTransformer,
-        security: [
-            {
-                scheme: 'bearer',
-                type: 'http'
-            }
-        ],
-        url: '/pet/{petId}',
-        ...options
-    });
+export const updatePetWithForm = <ThrowOnError extends boolean = false>(
+  options: Options<UpdatePetWithFormData, ThrowOnError>,
+) => {
+  return (options.client ?? client).post<
+    UpdatePetWithFormResponses,
+    UpdatePetWithFormErrors,
+    ThrowOnError
+  >({
+    responseTransformer: updatePetWithFormResponseTransformer,
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/pet/{petId}',
+    ...options,
+  });
 };
 
 /**
@@ -168,22 +283,28 @@ export const updatePetWithForm = <ThrowOnError extends boolean = false>(options:
  *
  * Upload image of the pet.
  */
-export const uploadFile = <ThrowOnError extends boolean = false>(options: Options<UploadFileData, ThrowOnError>) => {
-    return (options.client ?? client).post<UploadFileResponses, UploadFileErrors, ThrowOnError>({
-        bodySerializer: null,
-        security: [
-            {
-                scheme: 'bearer',
-                type: 'http'
-            }
-        ],
-        url: '/pet/{petId}/uploadImage',
-        ...options,
-        headers: {
-            'Content-Type': 'application/octet-stream',
-            ...options.headers
-        }
-    });
+export const uploadFile = <ThrowOnError extends boolean = false>(
+  options: Options<UploadFileData, ThrowOnError>,
+) => {
+  return (options.client ?? client).post<
+    UploadFileResponses,
+    UploadFileErrors,
+    ThrowOnError
+  >({
+    bodySerializer: null,
+    security: [
+      {
+        scheme: 'bearer',
+        type: 'http',
+      },
+    ],
+    url: '/pet/{petId}/uploadImage',
+    ...options,
+    headers: {
+      'Content-Type': 'application/octet-stream',
+      ...options.headers,
+    },
+  });
 };
 
 /**
@@ -191,17 +312,23 @@ export const uploadFile = <ThrowOnError extends boolean = false>(options: Option
  *
  * Returns a map of status codes to quantities.
  */
-export const getInventory = <ThrowOnError extends boolean = false>(options?: Options<GetInventoryData, ThrowOnError>) => {
-    return (options?.client ?? client).get<GetInventoryResponses, GetInventoryErrors, ThrowOnError>({
-        security: [
-            {
-                name: 'api_key',
-                type: 'apiKey'
-            }
-        ],
-        url: '/store/inventory',
-        ...options
-    });
+export const getInventory = <ThrowOnError extends boolean = false>(
+  options?: Options<GetInventoryData, ThrowOnError>,
+) => {
+  return (options?.client ?? client).get<
+    GetInventoryResponses,
+    GetInventoryErrors,
+    ThrowOnError
+  >({
+    security: [
+      {
+        name: 'api_key',
+        type: 'apiKey',
+      },
+    ],
+    url: '/store/inventory',
+    ...options,
+  });
 };
 
 /**
@@ -209,16 +336,22 @@ export const getInventory = <ThrowOnError extends boolean = false>(options?: Opt
  *
  * Place a new order in the store.
  */
-export const placeOrder = <ThrowOnError extends boolean = false>(options?: Options<PlaceOrderData, ThrowOnError>) => {
-    return (options?.client ?? client).post<PlaceOrderResponses, PlaceOrderErrors, ThrowOnError>({
-        responseTransformer: placeOrderResponseTransformer,
-        url: '/store/order',
-        ...options,
-        headers: {
-            'Content-Type': 'application/json',
-            ...options?.headers
-        }
-    });
+export const placeOrder = <ThrowOnError extends boolean = false>(
+  options?: Options<PlaceOrderData, ThrowOnError>,
+) => {
+  return (options?.client ?? client).post<
+    PlaceOrderResponses,
+    PlaceOrderErrors,
+    ThrowOnError
+  >({
+    responseTransformer: placeOrderResponseTransformer,
+    url: '/store/order',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options?.headers,
+    },
+  });
 };
 
 /**
@@ -226,11 +359,17 @@ export const placeOrder = <ThrowOnError extends boolean = false>(options?: Optio
  *
  * For valid response try integer IDs with value < 1000. Anything above 1000 or non-integers will generate API errors.
  */
-export const deleteOrder = <ThrowOnError extends boolean = false>(options: Options<DeleteOrderData, ThrowOnError>) => {
-    return (options.client ?? client).delete<DeleteOrderResponses, DeleteOrderErrors, ThrowOnError>({
-        url: '/store/order/{orderId}',
-        ...options
-    });
+export const deleteOrder = <ThrowOnError extends boolean = false>(
+  options: Options<DeleteOrderData, ThrowOnError>,
+) => {
+  return (options.client ?? client).delete<
+    DeleteOrderResponses,
+    DeleteOrderErrors,
+    ThrowOnError
+  >({
+    url: '/store/order/{orderId}',
+    ...options,
+  });
 };
 
 /**
@@ -238,12 +377,18 @@ export const deleteOrder = <ThrowOnError extends boolean = false>(options: Optio
  *
  * For valid response try integer IDs with value <= 5 or > 10. Other values will generate exceptions.
  */
-export const getOrderById = <ThrowOnError extends boolean = false>(options: Options<GetOrderByIdData, ThrowOnError>) => {
-    return (options.client ?? client).get<GetOrderByIdResponses, GetOrderByIdErrors, ThrowOnError>({
-        responseTransformer: getOrderByIdResponseTransformer,
-        url: '/store/order/{orderId}',
-        ...options
-    });
+export const getOrderById = <ThrowOnError extends boolean = false>(
+  options: Options<GetOrderByIdData, ThrowOnError>,
+) => {
+  return (options.client ?? client).get<
+    GetOrderByIdResponses,
+    GetOrderByIdErrors,
+    ThrowOnError
+  >({
+    responseTransformer: getOrderByIdResponseTransformer,
+    url: '/store/order/{orderId}',
+    ...options,
+  });
 };
 
 /**
@@ -251,16 +396,22 @@ export const getOrderById = <ThrowOnError extends boolean = false>(options: Opti
  *
  * This can only be done by the logged in user.
  */
-export const createUser = <ThrowOnError extends boolean = false>(options?: Options<CreateUserData, ThrowOnError>) => {
-    return (options?.client ?? client).post<CreateUserResponses, CreateUserErrors, ThrowOnError>({
-        responseTransformer: createUserResponseTransformer,
-        url: '/user',
-        ...options,
-        headers: {
-            'Content-Type': 'application/json',
-            ...options?.headers
-        }
-    });
+export const createUser = <ThrowOnError extends boolean = false>(
+  options?: Options<CreateUserData, ThrowOnError>,
+) => {
+  return (options?.client ?? client).post<
+    CreateUserResponses,
+    CreateUserErrors,
+    ThrowOnError
+  >({
+    responseTransformer: createUserResponseTransformer,
+    url: '/user',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options?.headers,
+    },
+  });
 };
 
 /**
@@ -268,16 +419,22 @@ export const createUser = <ThrowOnError extends boolean = false>(options?: Optio
  *
  * Creates list of users with given input array.
  */
-export const createUsersWithListInput = <ThrowOnError extends boolean = false>(options?: Options<CreateUsersWithListInputData, ThrowOnError>) => {
-    return (options?.client ?? client).post<CreateUsersWithListInputResponses, CreateUsersWithListInputErrors, ThrowOnError>({
-        responseTransformer: createUsersWithListInputResponseTransformer,
-        url: '/user/createWithList',
-        ...options,
-        headers: {
-            'Content-Type': 'application/json',
-            ...options?.headers
-        }
-    });
+export const createUsersWithListInput = <ThrowOnError extends boolean = false>(
+  options?: Options<CreateUsersWithListInputData, ThrowOnError>,
+) => {
+  return (options?.client ?? client).post<
+    CreateUsersWithListInputResponses,
+    CreateUsersWithListInputErrors,
+    ThrowOnError
+  >({
+    responseTransformer: createUsersWithListInputResponseTransformer,
+    url: '/user/createWithList',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options?.headers,
+    },
+  });
 };
 
 /**
@@ -285,11 +442,17 @@ export const createUsersWithListInput = <ThrowOnError extends boolean = false>(o
  *
  * Log into the system.
  */
-export const loginUser = <ThrowOnError extends boolean = false>(options?: Options<LoginUserData, ThrowOnError>) => {
-    return (options?.client ?? client).get<LoginUserResponses, LoginUserErrors, ThrowOnError>({
-        url: '/user/login',
-        ...options
-    });
+export const loginUser = <ThrowOnError extends boolean = false>(
+  options?: Options<LoginUserData, ThrowOnError>,
+) => {
+  return (options?.client ?? client).get<
+    LoginUserResponses,
+    LoginUserErrors,
+    ThrowOnError
+  >({
+    url: '/user/login',
+    ...options,
+  });
 };
 
 /**
@@ -297,11 +460,17 @@ export const loginUser = <ThrowOnError extends boolean = false>(options?: Option
  *
  * Log user out of the system.
  */
-export const logoutUser = <ThrowOnError extends boolean = false>(options?: Options<LogoutUserData, ThrowOnError>) => {
-    return (options?.client ?? client).get<LogoutUserResponses, LogoutUserErrors, ThrowOnError>({
-        url: '/user/logout',
-        ...options
-    });
+export const logoutUser = <ThrowOnError extends boolean = false>(
+  options?: Options<LogoutUserData, ThrowOnError>,
+) => {
+  return (options?.client ?? client).get<
+    LogoutUserResponses,
+    LogoutUserErrors,
+    ThrowOnError
+  >({
+    url: '/user/logout',
+    ...options,
+  });
 };
 
 /**
@@ -309,11 +478,17 @@ export const logoutUser = <ThrowOnError extends boolean = false>(options?: Optio
  *
  * This can only be done by the logged in user.
  */
-export const deleteUser = <ThrowOnError extends boolean = false>(options: Options<DeleteUserData, ThrowOnError>) => {
-    return (options.client ?? client).delete<DeleteUserResponses, DeleteUserErrors, ThrowOnError>({
-        url: '/user/{username}',
-        ...options
-    });
+export const deleteUser = <ThrowOnError extends boolean = false>(
+  options: Options<DeleteUserData, ThrowOnError>,
+) => {
+  return (options.client ?? client).delete<
+    DeleteUserResponses,
+    DeleteUserErrors,
+    ThrowOnError
+  >({
+    url: '/user/{username}',
+    ...options,
+  });
 };
 
 /**
@@ -321,12 +496,18 @@ export const deleteUser = <ThrowOnError extends boolean = false>(options: Option
  *
  * Get user detail based on username.
  */
-export const getUserByName = <ThrowOnError extends boolean = false>(options: Options<GetUserByNameData, ThrowOnError>) => {
-    return (options.client ?? client).get<GetUserByNameResponses, GetUserByNameErrors, ThrowOnError>({
-        responseTransformer: getUserByNameResponseTransformer,
-        url: '/user/{username}',
-        ...options
-    });
+export const getUserByName = <ThrowOnError extends boolean = false>(
+  options: Options<GetUserByNameData, ThrowOnError>,
+) => {
+  return (options.client ?? client).get<
+    GetUserByNameResponses,
+    GetUserByNameErrors,
+    ThrowOnError
+  >({
+    responseTransformer: getUserByNameResponseTransformer,
+    url: '/user/{username}',
+    ...options,
+  });
 };
 
 /**
@@ -334,13 +515,19 @@ export const getUserByName = <ThrowOnError extends boolean = false>(options: Opt
  *
  * This can only be done by the logged in user.
  */
-export const updateUser = <ThrowOnError extends boolean = false>(options: Options<UpdateUserData, ThrowOnError>) => {
-    return (options.client ?? client).put<UpdateUserResponses, UpdateUserErrors, ThrowOnError>({
-        url: '/user/{username}',
-        ...options,
-        headers: {
-            'Content-Type': 'application/json',
-            ...options.headers
-        }
-    });
+export const updateUser = <ThrowOnError extends boolean = false>(
+  options: Options<UpdateUserData, ThrowOnError>,
+) => {
+  return (options.client ?? client).put<
+    UpdateUserResponses,
+    UpdateUserErrors,
+    ThrowOnError
+  >({
+    url: '/user/{username}',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
+  });
 };
