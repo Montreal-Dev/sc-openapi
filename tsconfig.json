@@ -13,5 +13,5 @@
   "publishConfig": {
     "directory": "dist"
   },
-  "include": ["openapi/src/**/*"]
+  "include": ["src/openapi/generated"]
 }
