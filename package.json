@@ -1,20 +1,23 @@
 {
   "type": "module",
   "author": "Rabel",
-  "name": "sc-openapi",
+  "name": "openapi-sdk-generator",
   "description": "A fully typed, auto-generated TypeScript client for the SoundCloud API, built from OpenAPI using Hey-API.",
   "version": "1.0.27",
   "source": "https://raw.githubusercontent.com/swagger-api/swagger-petstore/master/src/main/resources/openapi.yaml",
   "license": "MIT",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "directory": "dist"
   },
   "files": [
     "dist"
@@ -27,8 +30,8 @@
     "sync:patch": "node lib/scripts/sync-patch.js",
     "sync:version": "node lib/scripts/sync-version.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "build": "tsc -p tsconfig.json",
-    "prepublishOnly": "pnpm gen && pnpm build"
+    "build": "tsc",
+    "prepublish": "pnpm gen && pnpm build"
   },
   "devDependencies": {
     "@hey-api/openapi-ts": "^0.87.5",

@@ -10,5 +10,8 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["openapi/src"]
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "include": ["openapi/src/**/*"]
 }
