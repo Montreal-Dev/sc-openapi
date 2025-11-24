@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Build output
+dist/
+
+# Generated OpenAPI SDK (DO NOT IGNORE if users need it)
+# Ignore the *source* of generated code during development,
+# but KEEP generated code in the published package.
+src/generated/*
+!src/generated/.keep
+
+# TypeScript
+*.tsbuildinfo
+
+# Local environment
+.env
+.env.*
+*.local
+
+# IDE / OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# Test coverage
+coverage/
+
+# pnpm workspace stuff
+.pnpm-store/
