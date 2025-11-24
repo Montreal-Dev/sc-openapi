@@ -2,9 +2,9 @@
   "type": "module",
   "author": "Rabel",
   "name": "sc-openapi",
+  "description": "A fully typed, auto-generated TypeScript client for the SoundCloud API, built from OpenAPI using Hey-API.",
   "version": "1.0.27",
   "input": "https://raw.githubusercontent.com/swagger-api/swagger-petstore/master/src/main/resources/openapi.yaml",
-  "description": "A fully typed, auto-generated TypeScript client for the SoundCloud API, built from OpenAPI using Hey-API.",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -27,9 +27,9 @@
     "prepublishOnly": "pnpm gen && pnpm build"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.42.0",
+    "@hey-api/openapi-ts": "^0.87.5",
     "node-fetch": "^3.3.2",
-    "typescript": "^5.0.0",
+    "typescript": "^5.9.3",
     "yaml": "^2.8.1"
   }
 }
