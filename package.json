@@ -4,7 +4,7 @@
   "name": "sc-openapi",
   "description": "A fully typed, auto-generated TypeScript client for the SoundCloud API, built from OpenAPI using Hey-API.",
   "version": "1.0.27",
-  "input": "https://raw.githubusercontent.com/swagger-api/swagger-petstore/master/src/main/resources/openapi.yaml",
+  "source": "https://raw.githubusercontent.com/swagger-api/swagger-petstore/master/src/main/resources/openapi.yaml",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
